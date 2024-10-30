@@ -8,7 +8,7 @@
             <xpath expr="//sheet/group" position="inside">
                 <group>
                     <field name="closed_by_documents"/>
-                   <field name="original_document_number" depends="closed_by_documents" modifiers="{'invisible': [('closed_by_documents', '=', False)], 'required': [('closed_by_documents', '=', True)]}"/>
+                   <field name="original_document_number" invisible="closed_by_documents == False" required="closed_by_documents == True"/>
                 </group>
             </xpath>
         </field>
