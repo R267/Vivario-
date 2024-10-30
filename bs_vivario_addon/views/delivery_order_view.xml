@@ -1,5 +1,5 @@
 <odoo>
-    <!-- Inherit the delivery order form view to add the "Закрито документами" checkbox and "Номер документу" field -->
+    <!-- Inherit the delivery order form view to add the "Closed by documents" checkbox and "Document number" field -->
     <record id="view_picking_form_vivario" model="ir.ui.view">
         <field name="name">stock.picking.form.vivario</field>
         <field name="model">stock.picking</field>
@@ -8,12 +8,12 @@
             <xpath expr="//sheet/group" position="inside">
                 <group>
                     <field name="closed_by_documents"/>
-                    <field name="original_document_number"  options="{'required': [('closed_by_documents', '=', True)]}"/>
+                   <field name="original_document_number" depends="closed_by_documents" modifiers="{'invisible': [('closed_by_documents', '=', False)], 'required': [('closed_by_documents', '=', True)]}"/>
                 </group>
             </xpath>
         </field>
     </record>
-    <!-- Inherit the delivery order tree view to display the "Закрито документами" status -->
+    <!-- Inherit the delivery order tree view to display the "Closed by documents" status -->
     <record id="view_picking_tree_vivario" model="ir.ui.view">
         <field name="name">stock.picking.tree.vivario</field>
         <field name="model">stock.picking</field>
